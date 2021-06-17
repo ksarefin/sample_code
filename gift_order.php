@@ -1,85 +1,68 @@
 <?php
-/*******************************
-¤•i’•¶ˆ—
 
-2015/08/05	V‹Kì¬	’†‰Æ	
-2015/09/07	‹@”\C³	’†‰Æ	ƒLƒƒƒ“ƒy[ƒ““à—e•ÏX‘Î‰
-2015/09/14	‹@”\’Ç‰Á	’†‰Æ	Šó–]“’…“ú‘Î‰
-2015/09/17	‹@”\C³	’†‰Æ	ƒ|ƒCƒ“ƒg‚ÅƒGƒ‰[‚ÌÛ‚Ìx•¥‚¢•û–@•s‹ï‡C³
-2015/10/01	‹@”\’Ç‰Á	’†‰Æ	‘ãˆø‚Ìg‚¦‚È‚¢‰ïĞ‘Î‰
-2015/10/19	‹@”\’Ç‰Á	’†‰Æ	‘¡“šæ‚É‚àŠó–]“’…“ú‘Î‰
-2015/10/28	•ÏX		’†‰Æ	‘ãˆø‚ªg‚¦‚È‚¢Šé‹Æ‚©‚çƒŠƒuƒuƒŠƒbƒW‚ÆƒIƒtƒBƒXƒAƒ“‚ğíœ
-2015/12/02	‹@”\’Ç‰Á	’†‰Æ	o“XĞ‚²‚Æ‚É“’…“úw’è‰Â”\‰c‹Æ“ú‚ğİ’è‚·‚é
-2015/12/04	‹@”\’Ç‰Á	’†‰Æ	ƒ|ƒCƒ“ƒg5”{‘Î‰
-2020/08/24	‹@”\’Ç‰Á	kha	jcbƒJ[ƒhŒˆÏ’Ç‰Á
-2020/11/02	‹@”\C³	kha	jcbƒJ[ƒhŒˆÏ‚Ì¤•i–¼200•¶š‚Ü‚Å
-2020/12/09  ‹@”\’Ç‰Á	¬“c    y”Ì–{20-2675zƒuƒ‰ƒbƒNƒŠƒXƒg‘Îôib’èj
-2020/12/10	‹@”\’Ç‰Á	‰œR	Šó–]“’…ŠÔ‘I‘ğˆ‚ğo“XĞ‚ªİ’è‚µ‚½ŠÔ‚Å‘I‘ğ‚Å‚«‚é‚æ‚¤‘Î‰
-
-********************************/
 session_start();
 
-// ‹¤’ÊŠÖ”“Ç‚İ‚İ
+// å…±é€šé–¢æ•°èª­ã¿è¾¼ã¿
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_general.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_validate.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_login.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_order.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_buyer.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/function/function_seller.php");
-// ‹¤’Ê’è‹`“Ç‚İ‚İ
+// å…±é€šå®šç¾©èª­ã¿è¾¼ã¿
 require_once("/var/www/vhosts/c-joy.co.jp/common/define/d_general.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/define/d_buyer.php");
 require_once("/var/www/vhosts/c-joy.co.jp/common/define/d_session_key.php");
-// ƒNƒ‰ƒX“Ç‚İ‚İ
+// ã‚¯ãƒ©ã‚¹èª­ã¿è¾¼ã¿
 require_once('/var/www/vhosts/c-joy.co.jp/common/class/class_chakubi.php');
 
-//ƒJ[ƒhŒˆÏFİ’èƒtƒ@ƒCƒ‹“Ç‚İ‚İ
+//ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆï¼šè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
 require_once('/var/www/vhosts/c-joy.co.jp/common/class/class_credit_card.php');
-require_once('/var/www/vhosts/c-joy.co.jp/common/define/d_creditcard.php');				//ƒJ[ƒhŒˆÏ‘Î‰‹¤’Êdefin
-require_once('/var/www/vhosts/c-joy.co.jp/common/function/f_creditcard.php');				//ƒJ[ƒhŒˆÏ‘Î‰‹¤’ÊŠÖ”
+require_once('/var/www/vhosts/c-joy.co.jp/common/define/d_creditcard.php');				//ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆå¯¾å¿œå…±é€šdefin
+require_once('/var/www/vhosts/c-joy.co.jp/common/function/f_creditcard.php');				//ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆå¯¾å¿œå…±é€šé–¢æ•°
 
 F_check_access();
 
 //-----------------------------------------------
-// ‰Šúˆ—
+// åˆæœŸå‡¦ç†
 //-----------------------------------------------
 
-// ¡DBƒNƒ‰ƒX
+// â– DBã‚¯ãƒ©ã‚¹
 include_once("/var/www/vhosts/c-joy.co.jp/common/class/class_db.php");
-$c_db=new G_class_db;	//DBƒNƒ‰ƒXÀ‘Ì‰»
-$db_name='cjoy';		//DB–¼
+$c_db=new G_class_db;	//DBã‚¯ãƒ©ã‚¹å®Ÿä½“åŒ–
+$db_name='cjoy';		//DBå
 $table_arr = array();
-$table_arr['product_gift']	 		= 'cjoy.product_gift';				// ¤•iÚ×
+$table_arr['product_gift']	 		= 'cjoy.product_gift';				// å•†å“è©³ç´°
 $table_arr['product_b_gift']	 	= 'cjoy.product_b_gift';
-$table_arr['buyer_member'] 			= 'cjoy.buyer_member';			// ”ƒ‚¢è‰ïˆõ“o˜^î•ñ
-$table_arr['buyer_payment'] 		= 'cjoy.buyer_payment';			// ”ƒ‚¢è‰ïˆõx•¥î•ñ
-$table_arr['buyer_dest'] 			= 'cjoy.buyer_destination';		// ”ƒ‚¢è‰ïˆõ‘—•tæî•ñ
-$table_arr['buyer_point'] 			= 'cjoy.buyer_point';			// ”ƒ‚¢è•Û—Lƒ|ƒCƒ“ƒgî•ñ
-$table_arr['common_campaign']		= 'cjoy.common_campaign';		// ƒLƒƒƒ“ƒy[ƒ“î•ñ
+$table_arr['buyer_member'] 			= 'cjoy.buyer_member';			// è²·ã„æ‰‹ä¼šå“¡ç™»éŒ²æƒ…å ±
+$table_arr['buyer_payment'] 		= 'cjoy.buyer_payment';			// è²·ã„æ‰‹ä¼šå“¡æ”¯æ‰•æƒ…å ±
+$table_arr['buyer_dest'] 			= 'cjoy.buyer_destination';		// è²·ã„æ‰‹ä¼šå“¡é€ä»˜å…ˆæƒ…å ±
+$table_arr['buyer_point'] 			= 'cjoy.buyer_point';			// è²·ã„æ‰‹ä¿æœ‰ãƒã‚¤ãƒ³ãƒˆæƒ…å ±
+$table_arr['common_campaign']		= 'cjoy.common_campaign';		// ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³æƒ…å ±
 $table_arr['order_campain']			= 'cjoy.order_campain';
 $table_arr['delivery_shitei']		= 'cjoy.delivery_shitei';
 //-----------------------------------------------
-// •Ï”E’è”
+// å¤‰æ•°ãƒ»å®šæ•°
 //-----------------------------------------------
 
-//‘——¿–³—¿‚É‚È‚éğŒ
+//é€æ–™ç„¡æ–™ã«ãªã‚‹æ¡ä»¶
 define('DF_delivery_order_limit', 3000);
 define('DF_discount_amout', 500);
 define('DF_cool_bin', 500);
 
-// •Ï”
-$D_main = '';			// ƒƒCƒ“•\¦
-$D_mess = '';			// ì‹ÆƒƒbƒZ[ƒW
+// å¤‰æ•°
+$D_main = '';			// ãƒ¡ã‚¤ãƒ³è¡¨ç¤º
+$D_mess = '';			// ä½œæ¥­ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 
-// ‰ïˆõ“o˜^‰æ–Ê—p
+// ä¼šå“¡ç™»éŒ²ç”»é¢ç”¨
 $D_option = '';
 $D_button = '';
 
-// ƒJ[ƒh—p
+// ã‚«ãƒ¼ãƒ‰ç”¨
 $D_card_table = '';
 
 $no_seller_flg = 1;
-// ƒoƒŠƒf[ƒVƒ‡ƒ“—p’è‹`
+// ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨å®šç¾©
 $A_validate = array(
 	'p_dest_name'		=> array('not_empty', 'except_special_symbol'),
 	'p_dest_zip'		=> array('not_empty', 'only_num','length'=>array('specified'=>7),),
@@ -93,56 +76,56 @@ $A_validate_wrap = array(
 	'p_noshi_btm'		=> array('except_special_symbol','length'=>array('max'=>20),),
 );
 
-// post’l‚Ì“ú–{Œê–¼iƒoƒŠƒf[ƒVƒ‡ƒ“—pj
+// postå€¤ã®æ—¥æœ¬èªåï¼ˆãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ï¼‰
 $A_post_name = array(
-	'p_dest_name'		=> '–¼‘O',
-	'p_dest_zip'		=> '—X•Ö”Ô†',
-	'p_dest_add2'		=> 's‹æ’¬‘º–¼',
-	'p_dest_add3'		=> '”Ô’nAŒš•¨–¼',
-	'p_dest_tel'		=> '“d˜b”Ô†',
+	'p_dest_name'		=> 'åå‰',
+	'p_dest_zip'		=> 'éƒµä¾¿ç•ªå·',
+	'p_dest_add2'		=> 'å¸‚åŒºç”ºæ‘å',
+	'p_dest_add3'		=> 'ç•ªåœ°ã€å»ºç‰©å',
+	'p_dest_tel'		=> 'é›»è©±ç•ªå·',
 );
 $A_post_name_wrap = array(
-	'p_noshi_up'		=> '‚Ì‚µã’i(•\‘‚«)',
-	'p_noshi_btm'		=> '‚Ì‚µ‰º’i',
+	'p_noshi_up'		=> 'ã®ã—ä¸Šæ®µ(è¡¨æ›¸ã)',
+	'p_noshi_btm'		=> 'ã®ã—ä¸‹æ®µ',
 );
 
-// ‘ãˆø‚Ìg‚¦‚È‚¢”„‚èèID
+// ä»£å¼•ã®ä½¿ãˆãªã„å£²ã‚Šæ‰‹ID
 $A_unavailable_yamato = array(
 );
 
 $D_order_notice = '
 	<div style="color:#C00; margin-top:15px; font-size:13px;">
-		ƒuƒ‰ƒEƒU‚Ì [–ß‚é] ‚â [XV] ƒ{ƒ^ƒ“‚Íg—p‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B<br />
-		—\Šú‚µ‚È‚¢ƒGƒ‰[‚ÌŒ´ˆö‚É‚È‚è‚Ü‚·B
+		ãƒ–ãƒ©ã‚¦ã‚¶ã® [æˆ»ã‚‹] ã‚„ [æ›´æ–°] ãƒœã‚¿ãƒ³ã¯ä½¿ç”¨ã—ãªã„ã§ãã ã•ã„ã€‚<br />
+		äºˆæœŸã—ãªã„ã‚¨ãƒ©ãƒ¼ã®åŸå› ã«ãªã‚Šã¾ã™ã€‚
 	</div>
 ';
 
-//XSS‘Îô $_REQUEST $_GET $_POST‚Ì’l‚ğƒGƒXƒP[ƒvˆ—
+//XSSå¯¾ç­– $_REQUEST $_GET $_POSTã®å€¤ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—å‡¦ç†
 isset($_REQUEST) && $_REQUEST = F_change_safe_array($_REQUEST);
 isset($_GET) && $_GET = F_change_safe_array($_GET);
 isset($_POST) && $_POST = F_change_safe_array($_POST);
 //-----------------------------------------------
-// ƒŠƒNƒGƒXƒg’ló‚¯“n‚µ
+// ãƒªã‚¯ã‚¨ã‚¹ãƒˆå€¤å—ã‘æ¸¡ã—
 //-----------------------------------------------
 FM_array_trim($_POST);
 
-//ì‹Æí 
+//ä½œæ¥­ç¨® 
 $p_kind = 'top';		
 isset($_REQUEST['p_kind']) && $p_kind = $_REQUEST['p_kind'];
-// ¤•iƒVƒŠƒAƒ‹
+// å•†å“ã‚·ãƒªã‚¢ãƒ«
 $p_serial = 0;
 isset($_REQUEST['p_serial']) && $p_serial = $_REQUEST['p_serial'];
-// ƒƒOƒCƒ“ID
+// ãƒ­ã‚°ã‚¤ãƒ³ID
 $p_buyer_id = '';
 isset($_POST['p_buyer_id']) && $p_buyer_id = $_POST['p_buyer_id'];
-// ƒƒOƒCƒ“ƒpƒXƒ[ƒh
+// ãƒ­ã‚°ã‚¤ãƒ³ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 $p_buyer_password = '';
 isset($_POST['p_buyer_password']) && $p_buyer_password = $_POST['p_buyer_password'];
-// ‘¡“š•iİ’è
+// è´ˆç­”å“è¨­å®š
 $p_gift_flg = 0;
 isset($_POST['p_gift_flg']) && $p_gift_flg = (int)$_POST['p_gift_flg'];
 
-// ‰ïˆõ“o˜^’l
+// ä¼šå“¡ç™»éŒ²å€¤
 $p_buyer_name1 = '';
 isset($_POST['p_buyer_name1']) && $p_buyer_name1 = $_POST['p_buyer_name1'];
 $p_buyer_name2 = '';
@@ -163,7 +146,7 @@ $p_buyer_tel = '';
 isset($_POST['p_buyer_tel']) && $p_buyer_tel = $_POST['p_buyer_tel'];
 $p_buyer_sex = 0;
 isset($_POST['p_buyer_sex']) && $p_buyer_sex = $_POST['p_buyer_sex'];
-$p_buyer_age = '‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢';
+$p_buyer_age = 'é¸æŠã—ã¦ãã ã•ã„';
 isset($_POST['p_buyer_age']) && $p_buyer_age = $_POST['p_buyer_age'];
 $p_buyer_from = '';
 isset($_POST['p_buyer_from']) && $p_buyer_from = $_POST['p_buyer_from'];
@@ -176,7 +159,7 @@ isset($_POST['p_invited']) && $p_invited = $_POST['p_invited'];
 $p_errmess = '';
 isset($_POST['p_errmess']) && $p_errmess = $_POST['p_errmess'];
 
-// ”—ÊŠÖ˜A
+// æ•°é‡é–¢é€£
 $p_forhome = 0;
 isset($_POST['p_forhome']) && $p_forhome = (int)$_POST['p_forhome'];
 $p_home_quantity = 1;
@@ -188,7 +171,7 @@ isset($_POST['p_kibou_time']) && $p_kibou_time = $_POST['p_kibou_time'];
 $p_type = '';
 isset($_POST['p_type']) && $p_type = $_POST['p_type'];
 
-// x•¥
+// æ”¯æ‰•
 $p_select_point = 2;
 isset($_POST['p_select_point']) && $p_select_point = (int)$_POST['p_select_point'];
 $p_use_point = 0;
@@ -203,35 +186,35 @@ isset($_REQUEST['p_scroll']) && $p_scroll = $_REQUEST['p_scroll'];
 $moto_flg = 'normal';
 isset($_POST['moto_flg']) && $moto_flg = $_POST['moto_flg'];
 
-// ”Ì”„“X‚Ö‚Ì—v–]‚È‚Ç
+// è²©å£²åº—ã¸ã®è¦æœ›ãªã©
 $p_order_comment = '';
 isset($_POST['p_order_comment']) && $p_order_comment = $_POST['p_order_comment'];
 
 
 //-----------------------------------------------
-// BLƒ`ƒFƒbƒN
+// BLãƒã‚§ãƒƒã‚¯
 //-----------------------------------------------
 $err_message = '';
 if ($p_kind == 'order_confirm') {
 	$bl_array = [
-		['“d˜b”Ô†','ZŠ'],
-		['07040816098','‰ê–ÎŒS“ŒˆÉ“¤’¬”’“c451-1'],
-		['xxxx','ˆîés•S‘º1461-1ƒI[ƒxƒ‹ˆîé“ìR406'],
-		['xxxx','¼Rst”ü’¬4-21'],
-		['xxxx','‰¡•ls¼‹æŒË•”’¬2-18-5ƒƒCƒvƒ‹ƒqƒ‹ƒY21-302'],
-		['08075465244','”’˜VŒS”’˜V’¬”‹–ì342-197'],
-		['xxxx','ˆîés‘åŠÛ831ƒZƒU[ƒ‹‘½–€ƒK[ƒfƒ“505'],
-		['xxxx','–n“c‹æ“ŒŒü“‡5-41-18ƒ‰ƒCƒIƒ“ƒYƒK[ƒfƒ““ŒŒü“‡907'],
-		['xxxx','•É“ìs‰h’¬2-38ƒZƒ“ƒgƒ‰ƒ‹ƒnƒCƒc302'],
-		['xxxx','—û”n‹æŒõ‚ª‹u3-7-1-1206'],
-		['07042951401','Šƒ–ès•lŒ©•½15-34-506'],
-		['xxxx','’†’Ãìs’†ì’¬3-61']
+		['é›»è©±ç•ªå·','ä½æ‰€'],
+		['07040816098','è³€èŒ‚éƒ¡æ±ä¼Šè±†ç”ºç™½ç”°451-1'],
+		['xxxx','ç¨²åŸå¸‚ç™¾æ‘1461-1ã‚ªãƒ¼ãƒ™ãƒ«ç¨²åŸå—å±±406'],
+		['xxxx','æ¾å±±å¸‚æ˜¥ç¾ç”º4-21'],
+		['xxxx','æ¨ªæµœå¸‚è¥¿åŒºæˆ¸éƒ¨ç”º2-18-5ãƒ¡ã‚¤ãƒ—ãƒ«ãƒ’ãƒ«ã‚º21-302'],
+		['08075465244','ç™½è€éƒ¡ç™½è€ç”ºè©é‡342-197'],
+		['xxxx','ç¨²åŸå¸‚å¤§ä¸¸831ã‚»ã‚¶ãƒ¼ãƒ«å¤šæ‘©ã‚¬ãƒ¼ãƒ‡ãƒ³505'],
+		['xxxx','å¢¨ç”°åŒºæ±å‘å³¶5-41-18ãƒ©ã‚¤ã‚ªãƒ³ã‚ºã‚¬ãƒ¼ãƒ‡ãƒ³æ±å‘å³¶907'],
+		['xxxx','ç¢§å—å¸‚æ „ç”º2-38ã‚»ãƒ³ãƒˆãƒ©ãƒ«ãƒã‚¤ãƒ„302'],
+		['xxxx','ç·´é¦¬åŒºå…‰ãŒä¸˜3-7-1-1206'],
+		['07042951401','èŒ…ãƒ¶å´å¸‚æµœè¦‹å¹³15-34-506'],
+		['xxxx','ä¸­æ´¥å·å¸‚ä¸­å·ç”º3-61']
 	];
 
 	foreach($bl_array as $koko){
 		if(($koko[0] == $_SESSION[DF_sessionkey_member_info]['buyer_tel'])||
 		   (false !== strpos($_SESSION[DF_sessionkey_member_info]['buyer_address2'], $koko[1]))){
-			$err_message = 'Œ»İA¤•i‚ğ‚²w“ü‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñBÚ×‚É‚Â‚¢‚Ä‚Í‚¨–â‚¢‡‚í‚¹ƒy[ƒW‚æ‚è‚¨–â‚¢‡‚í‚¹Šè‚¢‚Ü‚·B';
+			$err_message = 'ç¾åœ¨ã€å•†å“ã‚’ã”è³¼å…¥ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚è©³ç´°ã«ã¤ã„ã¦ã¯ãŠå•ã„åˆã‚ã›ãƒšãƒ¼ã‚¸ã‚ˆã‚ŠãŠå•ã„åˆã‚ã›é¡˜ã„ã¾ã™ã€‚';
 			$p_kind = 'payment';
 			break;
 		}
@@ -239,12 +222,12 @@ if ($p_kind == 'order_confirm') {
 }
 
 //-----------------------------------------------
-// ì‹Æí•Êˆ—•”
+// ä½œæ¥­ç¨®åˆ¥å‡¦ç†éƒ¨
 //-----------------------------------------------
-/*********** ƒTƒvƒNƒGƒŠ ***********/
+/*********** ã‚µãƒ—ã‚¯ã‚¨ãƒª ***********/
 if ($p_kind == 'subquery') {
 	header("Content-type: text/plain; charset=shift_jis");
-	// UTF8‚ÅPOST‚³‚ê‚é‚Ì‚Åshift_jis‚É–ß‚·
+	// UTF8ã§POSTã•ã‚Œã‚‹ã®ã§shift_jisã«æˆ»ã™
 	foreach ($_POST as $key => $val) {
 		$_POST[$key] = mb_convert_encoding($val, 'SJIS', 'UTF-8');
 	}
@@ -254,15 +237,15 @@ if ($p_kind == 'subquery') {
 	if ($_POST['p_dest_kind'] == 'new') {
 		
 		$count = count(@$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest]);
-		// ãŒÀƒ`ƒFƒbƒN
+		// ä¸Šé™ãƒã‚§ãƒƒã‚¯
 		if ($count >= DF_member_dest_count) {
-			$D_mess = 'E“o˜^‰Â”\‚È‚¨“Í‚¯æ‚ÍA'.DF_member_dest_count.'‚Ü‚Å‚Æ‚È‚è‚Ü‚·B';
+			$D_mess = 'ãƒ»ç™»éŒ²å¯èƒ½ãªãŠå±Šã‘å…ˆã¯ã€'.DF_member_dest_count.'ã¾ã§ã¨ãªã‚Šã¾ã™ã€‚';
 			echo $D_mess;
 			exit;
 		}
 		
 		$error_arr = FM_validate($_POST, $A_validate, $A_post_name);
-		// ƒGƒ‰[
+		// ã‚¨ãƒ©ãƒ¼
 		if (! empty($error_arr)) {
 			$D_mess = implode("<br>", $error_arr);
 			echo $D_mess;
@@ -271,11 +254,11 @@ if ($p_kind == 'subquery') {
 		
 		$serial=FM_ins_buyer_destination($buyer_serial, $_POST);
 		if($serial===false){
-			echo 'ƒVƒXƒeƒ€ƒGƒ‰[”­¶‚µ‚Ü‚µ‚½B”‚P';
+			echo 'ã‚·ã‚¹ãƒ†ãƒ ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿã—ã¾ã—ãŸã€‚ï¼ƒï¼‘';
 			exit;
 		}
 		
-		// ®Œ`‚µ‚ÄƒZƒbƒVƒ‡ƒ“‚É’Ç‰Á
+		// æ•´å½¢ã—ã¦ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«è¿½åŠ 
 		$new_dest = array(
 			'serial' => $serial,
 			'dest_name' => $_POST['dest_name'], 
@@ -285,17 +268,17 @@ if ($p_kind == 'subquery') {
 			'dest_tel' => $_POST['dest_tel'], 
 			'need' => 1, 
 			'edit' => '',
-			'wrapping_word' => 'ƒ‰ƒbƒsƒ“ƒOE‚Ì‚µ–³‚µ',
+			'wrapping_word' => 'ãƒ©ãƒƒãƒ”ãƒ³ã‚°ãƒ»ã®ã—ç„¡ã—',
 			'wrapping_set' => array(
 									'wrapping' => 0,
 									'noshi' => 3, 
 									'noshi_upper' => '',
 									'noshi_bottom' => '',
 								),
-			'arrival_word' => 'Šó–]“’…“ú: w’è‚È‚µ@ŠÔw’è: w’è‚È‚µ',
+			'arrival_word' => 'å¸Œæœ›åˆ°ç€æ—¥: æŒ‡å®šãªã—ã€€æ™‚é–“æŒ‡å®š: æŒ‡å®šãªã—',
 			'kibou_datetime' => array(
-									'kibou_date' => 'w’è‚È‚µ',
-									'kibou_time' => 'w’è‚È‚µ',
+									'kibou_date' => 'æŒ‡å®šãªã—',
+									'kibou_time' => 'æŒ‡å®šãªã—',
 								),
 		);
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$serial] = $new_dest;
@@ -305,7 +288,7 @@ if ($p_kind == 'subquery') {
 		
 	} else if ($_POST['p_dest_kind'] == 'edit') {
 		$error_arr = FM_validate($_POST, $A_validate, $A_post_name);
-		// ƒGƒ‰[
+		// ã‚¨ãƒ©ãƒ¼
 		if (! empty($error_arr)) {
 			$D_mess = implode("<br>", $error_arr);
 			echo $D_mess;
@@ -314,12 +297,12 @@ if ($p_kind == 'subquery') {
 		
 		$rtn=FM_update_buyer_destination($_POST);
 		if($rtn===false){
-			echo 'ƒVƒXƒeƒ€ƒGƒ‰[”­¶‚µ‚Ü‚µ‚½B”‚Q';
+			echo 'ã‚·ã‚¹ãƒ†ãƒ ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿã—ã¾ã—ãŸã€‚ï¼ƒï¼’';
 			exit;
 		}
 		
 		$num = (int)$_POST['serial'];
-		// ³í¨ƒZƒbƒVƒ‡ƒ“C³
+		// æ­£å¸¸â†’ã‚»ãƒƒã‚·ãƒ§ãƒ³ä¿®æ­£
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['dest_name'] = $_POST['dest_name'];
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['dest_zip'] = $_POST['dest_zip'];
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['dest_address1'] = $_POST['dest_add1'];
@@ -335,7 +318,7 @@ if ($p_kind == 'subquery') {
 		$num = (int)$_POST['p_del_number'];
 		$rtn=FM_del_buyer_destination($num);
 		if($rtn===false){
-			echo 'ƒVƒXƒeƒ€ƒGƒ‰[”­¶‚µ‚Ü‚µ‚½B”‚R';
+			echo 'ã‚·ã‚¹ãƒ†ãƒ ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿã—ã¾ã—ãŸã€‚ï¼ƒï¼“';
 			exit;
 		}
 		$dest_arr=$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num];
@@ -351,14 +334,14 @@ if ($p_kind == 'subquery') {
 		echo 'OK';
 		exit;
 		
-	//===========ƒ‰ƒbƒsƒ“ƒOİ’è•ÒW============//
+	//===========ãƒ©ãƒƒãƒ”ãƒ³ã‚°è¨­å®šç·¨é›†============//
 	} else if ($_POST['p_dest_kind'] == 'wrap') {
 		
 		$error_arr = FM_validate($_POST, $A_validate_wrap, $A_post_name_wrap);
 		if ((int)$_POST['p_wrapping_set'] == 2 && (int)$_POST['p_noshi_set'] == 3 && empty($_POST['p_noshi_up'])) {
-			$error_arr[] = 'Eã’i‚Ì‚Ì‚µİ’è‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B';
+			$error_arr[] = 'ãƒ»ä¸Šæ®µã®ã®ã—è¨­å®šã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚';
 		}
-		// ƒGƒ‰[
+		// ã‚¨ãƒ©ãƒ¼
 		if (! empty($error_arr)) {
 			$D_mess = implode("<br>", $error_arr);
 			echo $D_mess;
@@ -369,24 +352,24 @@ if ($p_kind == 'subquery') {
 		$p_noshi_set = (int)@$_POST['p_noshi_set'];
 		$p_noshi_up = @$_POST['p_noshi_up'];
 		$p_noshi_btm = @$_POST['p_noshi_btm'];
-		// ³í¨ƒZƒbƒVƒ‡ƒ“C³
+		// æ­£å¸¸â†’ã‚»ãƒƒã‚·ãƒ§ãƒ³ä¿®æ­£
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_word'] = $A_wrapping_word[$p_wrapping_set];
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['wrapping'] = $p_wrapping_set;
-		// ‚Ì‚µİ’è‚ ‚è
+		// ã®ã—è¨­å®šã‚ã‚Š
 		if ( $p_wrapping_set == 2) {
 			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi'] = $p_noshi_set;
 			if ($p_noshi_set == 1) {
-				$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = '‚¨Î•é';
+				$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = 'ãŠæ­³æš®';
 			} else if ($p_noshi_set == 2) {
-				$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = '‚¨’†Œ³';
+				$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = 'ãŠä¸­å…ƒ';
 			} else if ($p_noshi_set == 3) {
 				$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = $p_noshi_up;
 			}
-			// •¶Œ¾’Ç‰Á
-			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_word'] .= 'iã’iF'.$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'];
+			// æ–‡è¨€è¿½åŠ 
+			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_word'] .= 'ï¼ˆä¸Šæ®µï¼š'.$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'];
 			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom'] = $p_noshi_btm;
-			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_word'] .= '@‰º’iF'.($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom']?$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom']:'–³‹L–¼').'j';		
-		// ‚Ì‚µ‚È‚µA‰Šú‰»
+			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_word'] .= 'ã€€ä¸‹æ®µï¼š'.($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom']?$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom']:'ç„¡è¨˜å').'ï¼‰';		
+		// ã®ã—ãªã—ã€åˆæœŸåŒ–
 		} else {
 			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_upper'] = '';
 			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['wrapping_set']['noshi_bottom'] = '';
@@ -394,7 +377,7 @@ if ($p_kind == 'subquery') {
 		echo 'OK';
 		exit;
 		
-	//===========Šó–]“’…“ú•ÏX============//
+	//===========å¸Œæœ›åˆ°ç€æ—¥æ™‚å¤‰æ›´============//
 	} else if ($_POST['p_dest_kind'] == 'arrival') {
 		
 		$num = (int)$_POST['p_arrival_number'];
@@ -403,7 +386,7 @@ if ($p_kind == 'subquery') {
 		
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['kibou_datetime']['kibou_date'] = $dst_kibou_date;
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['kibou_datetime']['kibou_time'] = $dst_kibou_time;
-		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['arrival_word'] = 'Šó–]“’…“ú: '.$dst_kibou_date.'@ŠÔw’è: '.$dst_kibou_time;
+		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$num]['arrival_word'] = 'å¸Œæœ›åˆ°ç€æ—¥: '.$dst_kibou_date.'ã€€æ™‚é–“æŒ‡å®š: '.$dst_kibou_time;
 
 		echo 'OK';
 		exit;
@@ -422,7 +405,7 @@ if ($p_kind == 'subquery') {
 		exit;
 	}
 }
-/*********** ÅIŠm”F ***********/
+/*********** æœ€çµ‚ç¢ºèª ***********/
 if ($p_kind == 'order_confirm') {
 	
 	$seller_id = $_POST['seller_id'];
@@ -432,7 +415,7 @@ if ($p_kind == 'order_confirm') {
 	}
 	
 	/*
-	//”ƒ‚¢è“Í‚¯æ•ÏX‚Ìê‡
+	//è²·ã„æ‰‹å±Šã‘å…ˆå¤‰æ›´ã®å ´åˆ
 	if($_SESSION[DF_sessionkey_member_info]['buyer_address1']!=$_POST['buyer_pref']){		
 		$delivery_fee=$_SESSION[DF_seller_info][$seller_id]['delivery_fee'];
 		$total=$_SESSION[DF_seller_info][$seller_id]['total']-$delivery_fee;
@@ -485,7 +468,7 @@ if ($p_kind == 'order_confirm') {
 	$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_kibou_time'] = $p_kibou_time;
 	
 	/*
-	// ©‘î—pİ’è
+	// è‡ªå®…ç”¨è¨­å®š
 	if (isset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]) && ! isset($_POST['p_forhome'])) {
 		$p_forhome = $_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_forhome'];
 		$p_home_quantity = $_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_home_quantity'];
@@ -493,7 +476,7 @@ if ($p_kind == 'order_confirm') {
 	$total_count = 0;
 	$noshi_count = 0;
 	$wrap_count = 0;
-	// ”—ÊŠm”F
+	// æ•°é‡ç¢ºèª
 	if ($p_forhome == 1) {
 		$total_count += $p_home_quantity;
 	}
@@ -517,7 +500,7 @@ if ($p_kind == 'order_confirm') {
 	$noshi_count = 0;
 	$wrap_count = 0;
 	
-	// ‚Ì‚µEƒ‰ƒbƒsƒ“ƒOA‡Œv‹àŠz‚ğŒvZ
+	// ã®ã—ãƒ»ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã€åˆè¨ˆé‡‘é¡ã‚’è¨ˆç®—
 	$sum_price = 0;
 	$item_price = $_SESSION[DF_seller_info][$seller_id]['total'];
 	$gift_delivery_fee_total=$_SESSION[DF_seller_info][$seller_id]['gift_delivery_fee_total'];
@@ -530,7 +513,7 @@ if ($p_kind == 'order_confirm') {
 		$sum_price += (int)DF_member_price;
 	}*/
 	
-	//ƒMƒtƒg‚Ìˆ¶æ
+	//ã‚®ãƒ•ãƒˆã®å®›å…ˆ
 	/*$dest_arr = array();
 	if (isset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest])) {
 		$dest_arr = $_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest];
@@ -542,57 +525,57 @@ if ($p_kind == 'order_confirm') {
 		}
 	}*/
 	
-	// ÅIİŒÉƒ`ƒFƒbƒN	
+	// æœ€çµ‚åœ¨åº«ãƒã‚§ãƒƒã‚¯	
 	foreach($_SESSION[DF_order_gift_cart][$seller_id] as $item_serial=>$item_arr){
 		$p_type=$item_arr['p_type'];
 		$A_item_new = FM_get_product_item_gift($item_serial, $p_type);
 		$total_count += $item_arr['quantity'];
 		if ($item_arr['zaiko_flg']==1 && (int)$A_item_new['zaiko'] < $item_arr['quantity']) {
-			$D_mess .= '<span style="color:red;">Œ»İ‚ÌİŒÉ”‚ª‚¨‹‚ß‚Ì”—Ê‚ğ‰º‰ñ‚è‚Ü‚µ‚½BŒ»İ‚ÌİŒÉF‚ ‚Æ '.$A_item_new['zaiko'].'ŒÂ</span>';
+			$D_mess .= '<span style="color:red;">ç¾åœ¨ã®åœ¨åº«æ•°ãŒãŠæ±‚ã‚ã®æ•°é‡ã‚’ä¸‹å›ã‚Šã¾ã—ãŸã€‚ç¾åœ¨ã®åœ¨åº«ï¼šã‚ã¨ '.$A_item_new['zaiko'].'å€‹</span>';
 		}
 	}
 	
 	/*
-	// ƒ|ƒCƒ“ƒg”æ“¾
+	// ãƒã‚¤ãƒ³ãƒˆæ•°å–å¾—
 	$buyer_point = FM_get_buyer_point($buyer_id);
-	// g—p‰Â”\‚È‚·‚×‚Ä‚Ìƒ|ƒCƒ“ƒg‚ğg‚¤
+	// ä½¿ç”¨å¯èƒ½ãªã™ã¹ã¦ã®ãƒã‚¤ãƒ³ãƒˆã‚’ä½¿ã†
 	if ($p_select_point == 1) {
 		$p_use_point = $buyer_point;
 		if ($sum_price < $p_use_point) $p_use_point = $sum_price;
-	// g‚¤ƒ|ƒCƒ“ƒg‚ğŒˆ‚ß‚é
+	// ä½¿ã†ãƒã‚¤ãƒ³ãƒˆã‚’æ±ºã‚ã‚‹
 	} else {
 		if ($buyer_point < $p_use_point) $p_use_point = $buyer_point;
 		if ($sum_price < $p_use_point) $p_use_point = $sum_price;
 	}*/
 	
-	// ÅIİŒÉƒ`ƒFƒbƒN
+	// æœ€çµ‚åœ¨åº«ãƒã‚§ãƒƒã‚¯
 	/*$A_item_new = FM_get_product_item($_SESSION[DF_order_gift_cart][$seller_id][$item_serial]['product_serial']);
 	if ((int)$A_item_new['zaiko'] < $total_count) {
-		$D_mess = '<span style="color:red;">Œ»İ‚ÌİŒÉ”‚ª‚¨‹‚ß‚Ì”—Ê‚ğ‰º‰ñ‚è‚Ü‚µ‚½BŒ»İ‚ÌİŒÉF‚ ‚Æ '.$A_item_new['zaiko'].'ŒÂ</span>';
+		$D_mess = '<span style="color:red;">ç¾åœ¨ã®åœ¨åº«æ•°ãŒãŠæ±‚ã‚ã®æ•°é‡ã‚’ä¸‹å›ã‚Šã¾ã—ãŸã€‚ç¾åœ¨ã®åœ¨åº«ï¼šã‚ã¨ '.$A_item_new['zaiko'].'å€‹</span>';
 		$p_kind = 'shipping';
 	} else if ($p_use_point % 500 != 0) {
 		$p_use_point -= ($p_use_point % 500);
-		$D_mess = '<span style="color:red;">‚²g—p‚É‚È‚ê‚éƒ|ƒCƒ“ƒg‚Í500ƒ|ƒCƒ“ƒg’PˆÊ‚Æ‚È‚è‚Ü‚·B</span>';
+		$D_mess = '<span style="color:red;">ã”ä½¿ç”¨ã«ãªã‚Œã‚‹ãƒã‚¤ãƒ³ãƒˆã¯500ãƒã‚¤ãƒ³ãƒˆå˜ä½ã¨ãªã‚Šã¾ã™ã€‚</span>';
 		$p_kind = 'payment';
 	} else if ($p_payment == 0 && $sum_price <= $p_use_point) {
-		$D_mess = '<span style="color:red;">ƒNƒŒƒWƒbƒgƒJ[ƒhŒˆÏ‚Ìê‡A‘SŠz‚ğƒ|ƒCƒ“ƒg‚Å‚¨x•¥‚¢‚É‚Í‚È‚ê‚Ü‚¹‚ñB</span>';
+		$D_mess = '<span style="color:red;">ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆã®å ´åˆã€å…¨é¡ã‚’ãƒã‚¤ãƒ³ãƒˆã§ãŠæ”¯æ‰•ã„ã«ã¯ãªã‚Œã¾ã›ã‚“ã€‚</span>';
 		$p_kind = 'payment';
 	}else {
 		
-		// æ“¾ƒ|ƒCƒ“ƒg‚ğ‚±‚±‚ÅŒvZ‚·‚é
+		// å–å¾—ãƒã‚¤ãƒ³ãƒˆã‚’ã“ã“ã§è¨ˆç®—ã™ã‚‹
 		$t_add_point = 0;
 		$move_kind = '';
 		$target_amount = $sum_price - $p_use_point;
 		$magnification = 1;
-		// ‰ïˆõ“o˜^’†i“K—pƒLƒƒƒ“ƒy[ƒ“‚ğæ“¾‚·‚éŠÖ”‚ªg‚¦‚È‚¢j
+		// ä¼šå“¡ç™»éŒ²ä¸­ï¼ˆé©ç”¨ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹é–¢æ•°ãŒä½¿ãˆãªã„ï¼‰
 		if (!empty($member_regist_arr)) {
-			// ‘ÎÛ‹àŠz‚©‚ç‰ïˆõ”ïˆø‚­
+			// å¯¾è±¡é‡‘é¡ã‹ã‚‰ä¼šå“¡è²»å¼•ã
 			$target_amount -= DF_member_price;
-			// µ‘ÒÒ‚©‚Ç‚¤‚©‚¾‚¯
+			// æ‹›å¾…è€…ã‹ã©ã†ã‹ã ã‘
 			$t_campaign = FM_get_campaign_data();
-			// Ğ‰îƒLƒƒƒ“ƒy[ƒ“’†‚ÅAµ‘ÒƒR[ƒh‚Ì“ü—Í‚ª‚ ‚ê‚Î(¦“ü‰ïw“ü‚É“K—p‚³‚ê‚é‚Ì‚ÍƒLƒƒƒ“ƒy[ƒ“ŠúŠÔ“à‚¾‚¯)
+			// ç´¹ä»‹ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³ä¸­ã§ã€æ‹›å¾…ã‚³ãƒ¼ãƒ‰ã®å…¥åŠ›ãŒã‚ã‚Œã°(â€»å…¥ä¼šæ™‚è³¼å…¥ã«é©ç”¨ã•ã‚Œã‚‹ã®ã¯ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³æœŸé–“å†…ã ã‘)
 			if (isset($t_campaign[DF_invite_campaign]) && !empty($member_regist_arr['p_invited'])) {
-				// Ğ‰îŒ³‰ïˆõ‚ğ’T‚µ‚ÄAŠY“–‚ª‚ ‚èA“o˜^‚ªƒLƒƒƒ“ƒy[ƒ“ŠúŠÔ“à‚È‚ç
+				// ç´¹ä»‹å…ƒä¼šå“¡ã‚’æ¢ã—ã¦ã€è©²å½“ãŒã‚ã‚Šã€ç™»éŒ²ãŒã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³æœŸé–“å†…ãªã‚‰
 				$t_invite_member = FM_get_buyer_from_invcode($member_regist_arr['p_invited']);
 				if (! empty($t_invite_member) && (date('Y-m-d') <= $t_campaign[DF_invite_campaign]['campaign_end'])) {
 					$t_add_point = floor($target_amount / 100) * $t_campaign[DF_invite_campaign]['percentage'];
@@ -601,7 +584,7 @@ if ($p_kind == 'order_confirm') {
 				}
 			}
 		} else {
-			// ŠY“–ƒLƒƒƒ“ƒy[ƒ“æ“¾
+			// è©²å½“ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³å–å¾—
 			$t_campaign = FM_get_suitable_campaign($_SESSION[DF_sessionkey_member_info]['buyer_serial'], $_SESSION[DF_sessionkey_member_info]['subscription_date']);
 			if (! empty($t_campaign)) {
 				$t_add_point = floor($target_amount / 100) * $t_campaign['percentage'];
@@ -615,19 +598,19 @@ if ($p_kind == 'order_confirm') {
 			$move_kind = 'plus_buy';
 		}
 		
-		// ƒZƒbƒVƒ‡ƒ“‚ÉƒI[ƒ_[‚É•K—v‚È”’lŠi”[
+		// ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«ã‚ªãƒ¼ãƒ€ãƒ¼ã«å¿…è¦ãªæ•°å€¤æ ¼ç´
 		$_SESSION[DF_ichiba_name]['post'] = array();
-		$_SESSION[DF_ichiba_name]['post']['p_count'] = $total_count;			// w“üŒÂ”‡Œv
-		$_SESSION[DF_ichiba_name]['post']['p_price'] = $sum_price;				// ‹àŠz‡Œv(”N‰ï”ïA‚Ì‚µAƒ‰ƒbƒsƒ“ƒOŠÜ‚Ş)
-		$_SESSION[DF_ichiba_name]['post']['p_usepoint'] = $p_use_point;			// g—pƒ|ƒCƒ“ƒg
-		$_SESSION[DF_ichiba_name]['post']['p_getpoint'] = $t_add_point;			// æ“¾ƒ|ƒCƒ“ƒg
-		$_SESSION[DF_ichiba_name]['post']['noshi_price'] = $noshi_price;		// ‚Ì‚µ‚Ì‰¿Ši
-		$_SESSION[DF_ichiba_name]['post']['wrapping_price'] = $wrapping_price;	// ƒ‰ƒbƒsƒ“ƒO‚Ì‰¿Ši
-		$_SESSION[DF_ichiba_name]['post']['move_kind'] = $move_kind;			// æ“¾ƒ|ƒCƒ“ƒgí•Ê
-		$_SESSION[DF_ichiba_name]['post']['percentage'] = $magnification;		// æ“¾ƒ|ƒCƒ“ƒgŠ„‡(w“ü‹àŠz‚Ì?%)
+		$_SESSION[DF_ichiba_name]['post']['p_count'] = $total_count;			// è³¼å…¥å€‹æ•°åˆè¨ˆ
+		$_SESSION[DF_ichiba_name]['post']['p_price'] = $sum_price;				// é‡‘é¡åˆè¨ˆ(å¹´ä¼šè²»ã€ã®ã—ã€ãƒ©ãƒƒãƒ”ãƒ³ã‚°å«ã‚€)
+		$_SESSION[DF_ichiba_name]['post']['p_usepoint'] = $p_use_point;			// ä½¿ç”¨ãƒã‚¤ãƒ³ãƒˆ
+		$_SESSION[DF_ichiba_name]['post']['p_getpoint'] = $t_add_point;			// å–å¾—ãƒã‚¤ãƒ³ãƒˆ
+		$_SESSION[DF_ichiba_name]['post']['noshi_price'] = $noshi_price;		// ã®ã—ã®ä¾¡æ ¼
+		$_SESSION[DF_ichiba_name]['post']['wrapping_price'] = $wrapping_price;	// ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã®ä¾¡æ ¼
+		$_SESSION[DF_ichiba_name]['post']['move_kind'] = $move_kind;			// å–å¾—ãƒã‚¤ãƒ³ãƒˆç¨®åˆ¥
+		$_SESSION[DF_ichiba_name]['post']['percentage'] = $magnification;		// å–å¾—ãƒã‚¤ãƒ³ãƒˆå‰²åˆ(è³¼å…¥é‡‘é¡ã®?%)
 		
 		if ($p_payment == 0) {
-			// ƒJ[ƒhŒˆÏŠm”F
+			// ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆç¢ºèª
 			$D_payment = FM_make_cardtable($buyer_id, 0, DF_ichiba_name);
 		} else {
 			$D_payment = $DF_payment[$p_payment];
@@ -637,24 +620,24 @@ if ($p_kind == 'order_confirm') {
 		exit;
 	}*/
 	
-	// ƒZƒbƒVƒ‡ƒ“‚ÉƒI[ƒ_[‚É•K—v‚È”’lŠi”[
+	// ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«ã‚ªãƒ¼ãƒ€ãƒ¼ã«å¿…è¦ãªæ•°å€¤æ ¼ç´
 	$_SESSION[DF_ichiba_name]['post'] = array();
-	$_SESSION[DF_ichiba_name]['post']['p_count'] = $total_count;			// w“üŒÂ”‡Œv
+	$_SESSION[DF_ichiba_name]['post']['p_count'] = $total_count;			// è³¼å…¥å€‹æ•°åˆè¨ˆ
 	$_SESSION[DF_ichiba_name]['post']['item_price'] = $_SESSION[DF_seller_info][$seller_id]['sub_total'];
-	$_SESSION[DF_ichiba_name]['post']['p_price'] = $sum_price;				// ‹àŠz‡Œv(”N‰ï”ïA‚Ì‚µAƒ‰ƒbƒsƒ“ƒOŠÜ‚Ş)
-	$_SESSION[DF_ichiba_name]['post']['p_usepoint'] = 0;			// g—pƒ|ƒCƒ“ƒg
-	$_SESSION[DF_ichiba_name]['post']['p_getpoint'] = 0;			// æ“¾ƒ|ƒCƒ“ƒg
-	$_SESSION[DF_ichiba_name]['post']['noshi_price'] = $noshi_price;		// ‚Ì‚µ‚Ì‰¿Ši
-	$_SESSION[DF_ichiba_name]['post']['wrapping_price'] = $wrapping_price;	// ƒ‰ƒbƒsƒ“ƒO‚Ì‰¿Ši
-	$_SESSION[DF_ichiba_name]['post']['move_kind'] = '';			// æ“¾ƒ|ƒCƒ“ƒgí•Ê
-	$_SESSION[DF_ichiba_name]['post']['percentage'] = 1;		// æ“¾ƒ|ƒCƒ“ƒgŠ„‡(w“ü‹àŠz‚Ì?%)
+	$_SESSION[DF_ichiba_name]['post']['p_price'] = $sum_price;				// é‡‘é¡åˆè¨ˆ(å¹´ä¼šè²»ã€ã®ã—ã€ãƒ©ãƒƒãƒ”ãƒ³ã‚°å«ã‚€)
+	$_SESSION[DF_ichiba_name]['post']['p_usepoint'] = 0;			// ä½¿ç”¨ãƒã‚¤ãƒ³ãƒˆ
+	$_SESSION[DF_ichiba_name]['post']['p_getpoint'] = 0;			// å–å¾—ãƒã‚¤ãƒ³ãƒˆ
+	$_SESSION[DF_ichiba_name]['post']['noshi_price'] = $noshi_price;		// ã®ã—ã®ä¾¡æ ¼
+	$_SESSION[DF_ichiba_name]['post']['wrapping_price'] = $wrapping_price;	// ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã®ä¾¡æ ¼
+	$_SESSION[DF_ichiba_name]['post']['move_kind'] = '';			// å–å¾—ãƒã‚¤ãƒ³ãƒˆç¨®åˆ¥
+	$_SESSION[DF_ichiba_name]['post']['percentage'] = 1;		// å–å¾—ãƒã‚¤ãƒ³ãƒˆå‰²åˆ(è³¼å…¥é‡‘é¡ã®?%)
 	$_SESSION[DF_ichiba_name]['post']['postage_total']=$_SESSION[DF_seller_info][$seller_id]['delivery_fee']+$gift_delivery_fee_total;
 	$_SESSION[DF_ichiba_name]['post']['cool_bin_fee']=$_SESSION[DF_seller_info][$seller_id]['cool_bin_fee']+$gift_cool_bin_fee_total;
 	$_SESSION[DF_ichiba_name]['post']['discount_amount']=$_SESSION[DF_seller_info][$seller_id]['discount_amount'];
 	$_SESSION[DF_ichiba_name]['post']['p_order_comment']=$p_order_comment;
 	
 	/*if ($p_payment == 0) {
-		// ƒJ[ƒhŒˆÏŠm”F
+		// ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆç¢ºèª
 		$D_payment = FM_make_cardtable($buyer_id, 0, DF_ichiba_name);
 	} else {
 		$D_payment = $DF_payment[$p_payment];
@@ -666,7 +649,7 @@ if ($p_kind == 'order_confirm') {
 	
 }
 
-/*********** ‚¨x•¥Šm”F ***********/
+/*********** ãŠæ”¯æ‰•ç¢ºèª ***********/
 if ($p_kind == 'payment') {
 	
 	$seller_id = $_REQUEST['seller_id'];
@@ -677,16 +660,16 @@ if ($p_kind == 'payment') {
 	}*/
 	
 	$member_regist_arr = array();
-	$buyer_name = 'ƒQƒXƒg';
+	$buyer_name = 'ã‚²ã‚¹ãƒˆ';
 	$current_seller_id = $_REQUEST['seller_id'];
-	// ‰ïˆõ
+	// ä¼šå“¡
 	$buyer_name = $_SESSION[DF_sessionkey_member_info]['delivery_buyer_name'];
 	$buyer_id = $_SESSION[DF_sessionkey_member_info]['buyer_id'];
 	$buyer_serial = $_SESSION[DF_sessionkey_member_info]['buyer_serial'];
 	$buyer_info = $_SESSION[DF_sessionkey_member_info];
 	if (empty($buyer_info)) {
-		// ƒGƒ‰[
-		FM_view_err_page('ƒZƒbƒVƒ‡ƒ“ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B<br>ƒuƒ‰ƒEƒU‚Ì–ß‚éƒ{ƒ^ƒ“‚Íg—p‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B<br>‚¨è”‚Å‚·‚ª‚à‚¤ˆê“x‚¨è‘±‚«‚ğ‚¨Šè‚¢‚¢‚½‚µ‚Ü‚·B', '¤•iÚ×ƒy[ƒW');
+		// ã‚¨ãƒ©ãƒ¼
+		FM_view_err_page('ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚<br>ãƒ–ãƒ©ã‚¦ã‚¶ã®æˆ»ã‚‹ãƒœã‚¿ãƒ³ã¯ä½¿ç”¨ã—ãªã„ã§ãã ã•ã„ã€‚<br>ãŠæ‰‹æ•°ã§ã™ãŒã‚‚ã†ä¸€åº¦ãŠæ‰‹ç¶šãã‚’ãŠé¡˜ã„ã„ãŸã—ã¾ã™ã€‚', 'å•†å“è©³ç´°ãƒšãƒ¼ã‚¸');
 		exit;
 	}
 	$buyer_tel = $buyer_info['buyer_tel'];
@@ -696,27 +679,27 @@ if ($p_kind == 'payment') {
 	
 	//unset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest]);
 	
-	// ‘—•tæó‹µæ“¾
+	// é€ä»˜å…ˆçŠ¶æ³å–å¾—
 	/*if (! isset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest])) {
 		$buyer_dest = FM_get_buyer_destination($buyer_serial);
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest] = $buyer_dest;
 	}*/
 	//print_r($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest]);
 	
-	// Œ§–¼ƒhƒƒbƒvƒ_ƒEƒ“
+	// çœŒåãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
 	$D_prefectures = FM_make_droplist($DF_ken_arr, 'buyer_pref', $buyer_pref, ' id="buyer_pref"');
 	$D_prefectures2 = FM_make_droplist($DF_ken_arr, 'new_dest_add1', "", ' id="edit_dest_add1"');
 	
-	// ’…“úƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg
+	// ç€æ—¥ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆ
 	$c_chakubi = new G_class_chakubi($_SESSION[DF_seller_info][$seller_id]['shipping_prepare']);
 	$t_chakustart_date = $c_chakubi->F_class_chakubi_get_shonichi();
 	
 	$_SESSION[DF_seller_info][$seller_id]['kibou_date'] = $c_chakubi->F_class_chakubi_make_chaku_ddl($t_chakustart_date, 'p_kibou_date', $p_kibou_date);
 	$delivery_shitei_info = F_get_delivery_time($_SESSION['seller_info'][$seller_id]['seller_id']);
 	if(!empty($delivery_shitei_info)){
-		// w’è‰Â”\“’…Šó–]ŠÔ‘Ñ
+		// æŒ‡å®šå¯èƒ½åˆ°ç€å¸Œæœ›æ™‚é–“å¸¯
 		$A_kibou_time = array();
-		$A_kibou_time[]='w’è‚È‚µ';
+		$A_kibou_time[]='æŒ‡å®šãªã—';
 		foreach($delivery_shitei_info as $key => $value){
 			$A_kibou_time[] = $value['shitei'];
 		}
@@ -724,12 +707,12 @@ if ($p_kind == 'payment') {
 	$_SESSION[DF_seller_info][$seller_id]['kibou_time'] = FM_make_droplist($A_kibou_time, 'p_kibou_time', $p_kibou_time, ' id="p_kibou_time"');	
 	
 	
-	// ’…“úƒhƒƒbƒvƒ_ƒEƒ“ƒŠƒXƒg
-	$D_kibou_date_dest = $c_chakubi->F_class_chakubi_make_chaku_ddl($t_chakustart_date, 'edit_kibou_date', 'w’è‚È‚µ');
-	$D_kibou_time_dest = FM_make_droplist($A_kibou_time, 'edit_kibou_time', "w’è‚È‚µ", ' id="edit_kibou_time"');		
+	// ç€æ—¥ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ãƒªã‚¹ãƒˆ
+	$D_kibou_date_dest = $c_chakubi->F_class_chakubi_make_chaku_ddl($t_chakustart_date, 'edit_kibou_date', 'æŒ‡å®šãªã—');
+	$D_kibou_time_dest = FM_make_droplist($A_kibou_time, 'edit_kibou_time', "æŒ‡å®šãªã—", ' id="edit_kibou_time"');		
 		
 	
-	// ‘¡“š—p‚Å‚È‚¢‚È‚çA‘—•tæ‚ÍƒŠƒZƒbƒg
+	// è´ˆç­”ç”¨ã§ãªã„ãªã‚‰ã€é€ä»˜å…ˆã¯ãƒªã‚»ãƒƒãƒˆ
 	/*if ($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_gift_setting] == 0) {
 		unset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest]);
 	}*/
@@ -737,7 +720,7 @@ if ($p_kind == 'payment') {
 		$total_count = 0;
 		$noshi_count = 0;
 		$wrap_count = 0;
-		// ”—ÊŠm”F
+		// æ•°é‡ç¢ºèª
 		/*if ($p_forhome == 1) {
 			$total_count += $p_home_quantity;
 		}*/
@@ -754,22 +737,22 @@ if ($p_kind == 'payment') {
 			}
 		}
 		
-		// JCB‚Ì¤•i–¼A¤•iƒR[ƒh
+		// JCBã®å•†å“åã€å•†å“ã‚³ãƒ¼ãƒ‰
 		$product_name=join(',',$temp_item);
 		$product_code=join(',',$temp_code);
 		$goods_name=mb_strlen($item_arr['product_name'], 'sjis')>200?mb_substr($item_arr['product_name'],0,190,'sjis'):$item_arr['product_name'];
 		if(count($_SESSION[DF_order_gift_cart][$seller_id])>1){
-			$goods_name .='@“™';
+			$goods_name .='ã€€ç­‰';
 		}
 		
-		//ƒMƒtƒg‚Ìˆ¶æ
+		//ã‚®ãƒ•ãƒˆã®å®›å…ˆ
 		$dest_arr = array();
 		if (isset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest])) {
 			$dest_arr = $_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest];
 			$p_dest_size = count($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest]);
 		}
 		
-		//ƒMƒtƒg‚Ì‘——¿AƒN[ƒ‹•ÖAƒ‰ƒbƒsƒ“ƒOE‚Ì‚µ‹à
+		//ã‚®ãƒ•ãƒˆã®é€æ–™ã€ã‚¯ãƒ¼ãƒ«ä¾¿ã€ãƒ©ãƒƒãƒ”ãƒ³ã‚°ãƒ»ã®ã—é‡‘
 		$git_item_total=0;
 		$gift_delivery_fee_total=0;
 		$gift_cool_bin_fee_total=0;
@@ -783,7 +766,7 @@ if ($p_kind == 'payment') {
 				
 				$git_item_total +=$dat['quantity'];
 				
-				// ‘——¿
+				// é€æ–™
 				if(($item_arr['price']*$dat['quantity'])<DF_delivery_order_limit){
 					if(isset($_SESSION[DF_seller_info][$seller_id]['delivery_fee_arr'][$dat['dest_address1']])){
 						$fee = $_SESSION[DF_seller_info][$seller_id]['delivery_fee_arr'][$dat['dest_address1']];
@@ -800,19 +783,19 @@ if ($p_kind == 'payment') {
 					@$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$key]['gift_delivery_fee']=0;
 				}
 				
-				// ƒN[ƒ‹•Ö
+				// ã‚¯ãƒ¼ãƒ«ä¾¿
 				if($item_arr['cool_bin_flg']==1){
 					@$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$key]['gift_cool_bin_fee']=DF_cool_bin;
 					$gift_cool_bin_fee_total +=DF_cool_bin;
 				}
 				
-				//ƒ‰ƒbƒsƒ“ƒO
+				//ãƒ©ãƒƒãƒ”ãƒ³ã‚°
 				if ($dat['wrapping_set']['wrapping'] == 1) {
 					$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$key]['wrapping_price']=$item_arr['wrapping_price'];
 					$gift_wrapping_price_total +=$item_arr['wrapping_price'];
 				}
 				
-				//‚Ì‚µ
+				//ã®ã—
 				if ($dat['wrapping_set']['wrapping'] == 2) {
 					$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_buyer_dest][$key]['wrapping_price']=$item_arr['noshi_price'];
 					$gift_noshi_price_total +=$item_arr['noshi_price'];
@@ -833,7 +816,7 @@ if ($p_kind == 'payment') {
 		
 		
 		
-		//”ƒ‚¢è©‘î‚Ìî•ñ
+		//è²·ã„æ‰‹è‡ªå®…ã®æƒ…å ±
 		$A_member_info = $_SESSION[DF_sessionkey_member_info];
 		if(!isset($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_forhome'])){
 			$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_forhome'] = $p_forhome;
@@ -849,7 +832,7 @@ if ($p_kind == 'payment') {
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_kibou_date'] = $p_kibou_date;
 		$_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_kibou_time'] = $p_kibou_time;
 		
-		//”ƒ‚¢è‘——¿
+		//è²·ã„æ‰‹é€æ–™
 		$_SESSION[DF_seller_info][$seller_id]['total']-=$_SESSION[DF_seller_info][$seller_id]['delivery_fee'];
 		$_SESSION[DF_seller_info][$seller_id]['total']-=$_SESSION[DF_seller_info][$seller_id]['cool_bin_fee'];
 		if($_SESSION[DF_sessionkey_order_gift_cart][DF_sessionkey_home_setting]['p_home_quantity']<=0 && $git_item_total>0){
@@ -873,7 +856,7 @@ if ($p_kind == 'payment') {
 				$_SESSION[DF_seller_info][$seller_id]['delivery_fee']=0;
 			}
 			
-			// ”ƒ‚¢èƒN[ƒ‹•Ö
+			// è²·ã„æ‰‹ã‚¯ãƒ¼ãƒ«ä¾¿
 			if($item_arr['cool_bin_flg']==1){
 				$_SESSION[DF_seller_info][$seller_id]['cool_bin_fee']=DF_cool_bin;
 				$_SESSION[DF_seller_info][$seller_id]['total']+=DF_cool_bin;
@@ -881,7 +864,7 @@ if ($p_kind == 'payment') {
 			
 		}
 		
-		//‘——¿Šm”F
+		//é€æ–™ç¢ºèª
 		if($delivery_flg=='not_match'){
 			$_SESSION[DF_seller_info][$seller_id]['delivery_flg']='not_match';
 		}else{
@@ -889,19 +872,19 @@ if ($p_kind == 'payment') {
 		}
 		
 		if ($total_count < 1) {
-			$D_mess = '<span style="color:red;">‚¨‹‚ß‚Ì”—Ê‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B</span>';
+			$D_mess = '<span style="color:red;">ãŠæ±‚ã‚ã®æ•°é‡ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚</span>';
 			$p_kind = 'shipping';
 			break;
 		}
 		//$A_item_new = FM_get_product_item($_SESSION[DF_order_gift_cart][$seller_id][$item_serial]['product_serial']);
 		/*if ((int)$A_item_new['zaiko'] < $total_count) {
-			$D_mess = '<span style="color:red;">Œ»İ‚ÌİŒÉ”‚ª‚¨‹‚ß‚Ì”—Ê‚ğ‰º‰ñ‚è‚Ü‚µ‚½BŒ»İ‚ÌİŒÉF‚ ‚Æ '.$A_item_new['zaiko'].'ŒÂ</span>';
+			$D_mess = '<span style="color:red;">ç¾åœ¨ã®åœ¨åº«æ•°ãŒãŠæ±‚ã‚ã®æ•°é‡ã‚’ä¸‹å›ã‚Šã¾ã—ãŸã€‚ç¾åœ¨ã®åœ¨åº«ï¼šã‚ã¨ '.$A_item_new['zaiko'].'å€‹</span>';
 			$p_kind = 'shipping';
 			break;
 		}*/
 		
 		
-		// ƒJ[ƒhŒˆÏ‡Œv‹àŠz
+		// ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆåˆè¨ˆé‡‘é¡
 		$sum_price = 0;
 		$item_price = $_SESSION[DF_seller_info][$seller_id]['total'];
 		$delivery_fee=$_SESSION[DF_seller_info][$seller_id]['delivery_fee'];
@@ -910,19 +893,19 @@ if ($p_kind == 'payment') {
 			$sum_price += (int)DF_member_price;
 		}*/
 		
-		// ƒJ[ƒhŒˆÏŠm”F
+		// ã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆç¢ºèª
 		$credit_card = new G_class_credit_card();
-		$credit_card->FC_set_member($buyer_id);	//”ƒ‚¢èid‚ğƒZƒbƒg
+		$credit_card->FC_set_member($buyer_id);	//è²·ã„æ‰‹idã‚’ã‚»ãƒƒãƒˆ
 
-		$flg_card_member = $credit_card->FC_is_card_member();//KaiinId‚ğƒZƒbƒg‚·‚éA•Ô‚è’l‚ÉŠÖ‚µ‚Ä‚Í‹C‚É‚µ‚È‚¢‚±‚Æ
+		$flg_card_member = $credit_card->FC_is_card_member();//KaiinIdã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã€è¿”ã‚Šå€¤ã«é–¢ã—ã¦ã¯æ°—ã«ã—ãªã„ã“ã¨
 		$D_card_table = FM_make_cardtable($buyer_id, 1, DF_ichiba_name);
 		
-		// jcbƒJ[ƒhŒˆÏ‚Ìê‡
+		// jcbã‚«ãƒ¼ãƒ‰æ±ºæ¸ˆã®å ´åˆ
 		$flg_card_member_jcb = true;
 		$authentication_key=substr(md5($buyer_id),0,8);
 		$order_no=time();
 		
-		//jcbƒJ[ƒh”ƒ‚¢èŠm”F
+		//jcbã‚«ãƒ¼ãƒ‰è²·ã„æ‰‹ç¢ºèª
 		$params = array(
 			'function_div'	=> 'A03'
 			,'trader_code'	=> DF_jcb_trader_code
@@ -954,24 +937,24 @@ if ($p_kind == 'payment') {
 			,'webcollectToken'=>$webcollectToken
 		);
 		
-		// ƒ|ƒCƒ“ƒg”æ“¾
+		// ãƒã‚¤ãƒ³ãƒˆæ•°å–å¾—
 		$buyer_point = FM_get_buyer_point($buyer_id);
 		require_once './tpl/gift_payment_order_tpl.php';
 		exit;
 	}
 }
-/*********** ‰ïˆõ ƒƒOƒCƒ“ˆ— ***********/
+/*********** ä¼šå“¡ ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç† ***********/
 if ($p_kind == 'member_login') {
-	// è“®ƒƒOƒCƒ“ƒ`ƒFƒbƒN
+	// æ‰‹å‹•ãƒ­ã‚°ã‚¤ãƒ³ãƒã‚§ãƒƒã‚¯
 	$FB_is_auto = false;
 	if (isset($_POST['p_buyer_id']) && isset($_POST['p_buyer_password'])) {
 		$ret = FM_auth($p_buyer_id, $p_buyer_password, $tmp_name);
 		if ($ret === true) {
-			// ƒZƒbƒVƒ‡ƒ“’l‚É”ƒ‚¢èî•ñ‚ğ‚Â
+			// ã‚»ãƒƒã‚·ãƒ§ãƒ³å€¤ã«è²·ã„æ‰‹æƒ…å ±ã‚’æŒã¤
 			$_SESSION[DF_sessionkey_member_info]['buyer_id'] = $p_buyer_id;
 			$_SESSION[DF_sessionkey_member_info]['buyer_name'] = $tmp_name;
 			$_SESSION[DF_sessionkey_member_info]['delivery_buyer_name'] = $tmp_name;
-			// ©“®ƒƒOƒCƒ“ƒZƒbƒg
+			// è‡ªå‹•ãƒ­ã‚°ã‚¤ãƒ³ã‚»ãƒƒãƒˆ
 			FM_setup_login($p_buyer_id);
 			$FB_is_auto = true;
 		}
@@ -979,7 +962,7 @@ if ($p_kind == 'member_login') {
 	if ($FB_is_auto) {
 		$A_member_info = FM_get_buyer_member($p_buyer_id);
 		
-		// ‰ïˆõî•ñæ“¾
+		// ä¼šå“¡æƒ…å ±å–å¾—
 		foreach ($A_member_info as $key => $info) {
 			if (!isset($_SESSION[DF_sessionkey_member_info][$key])) {
 				$_SESSION[DF_sessionkey_member_info][$key] = $info;
@@ -990,14 +973,14 @@ if ($p_kind == 'member_login') {
 		if ((int)$A_member_info['buyer_reg_status'] == 0) {
 			$p_kind = 'cart_summary';
 		} else {
-			$D_mess = '<span style="color:red;">¦”N‰ï”ï‚Ì‚¨x•¥‚¢‚ªŠm”F‚³‚ê‚é‚Ü‚Å“ñ“x–Ú‚Ì‚²w“ü‚Í‚Å‚«‚Ü‚¹‚ñB</span>';
-			// ‰æ–Ê•\¦
+			$D_mess = '<span style="color:red;">â€»å¹´ä¼šè²»ã®ãŠæ”¯æ‰•ã„ãŒç¢ºèªã•ã‚Œã‚‹ã¾ã§äºŒåº¦ç›®ã®ã”è³¼å…¥ã¯ã§ãã¾ã›ã‚“ã€‚</span>';
+			// ç”»é¢è¡¨ç¤º
 			require_once './tpl/gift_login_order_tpl.php';
 			exit;
 		}
 	} else {
-		$D_mess = '<span style="color:red;">¦ƒƒOƒCƒ“ID‚Ü‚½‚ÍƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·B</span>';
-		// ‰æ–Ê•\¦
+		$D_mess = '<span style="color:red;">â€»ãƒ­ã‚°ã‚¤ãƒ³IDã¾ãŸã¯ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™ã€‚</span>';
+		// ç”»é¢è¡¨ç¤º
 		require_once './tpl/gift_login_order_tpl.php';
 		exit;
 	}
@@ -1005,11 +988,11 @@ if ($p_kind == 'member_login') {
 
 
 
-/*********** ’•¶ƒgƒbƒv ƒƒOƒCƒ“ ***********/
+/*********** æ³¨æ–‡ãƒˆãƒƒãƒ— ãƒ­ã‚°ã‚¤ãƒ³ ***********/
 if ($p_kind == 'top') {
 	if(@$_SESSION[DF_sessionkey_member_info]['buyer_id']){
 		$A_member_info = FM_get_buyer_member($_SESSION[DF_sessionkey_member_info]['buyer_id']);
-		// ‰ïˆõî•ñæ“¾
+		// ä¼šå“¡æƒ…å ±å–å¾—
 		foreach ($A_member_info as $key => $info) {
 			if (!isset($_SESSION[DF_sessionkey_member_info][$key])) {
 				$_SESSION[DF_sessionkey_member_info][$key] = $info;
@@ -1024,8 +1007,8 @@ if ($p_kind == 'top') {
 	$A_item['p_type'] = $p_type;
 	$A_item['moto_flg'] = $moto_flg;
 	if (empty($A_item)) {
-		// ƒGƒ‰[
-		FM_view_err_page('‚¨’T‚µ‚Ì¤•i‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB', '¤•iÚ×ƒy[ƒW', 'notfound');
+		// ã‚¨ãƒ©ãƒ¼
+		FM_view_err_page('ãŠæ¢ã—ã®å•†å“ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚', 'å•†å“è©³ç´°ãƒšãƒ¼ã‚¸', 'notfound');
 		exit;
 	}
 	if ((int)$A_item['zaiko'] <= 0 && $zaiko_flg == 1) {
@@ -1039,7 +1022,7 @@ if ($p_kind == 'top') {
 	
 	$_SESSION[DF_sessionkey_order_gift_cart] = array();
 	
-	//ƒJ[ƒgƒZƒbƒVƒ‡ƒ“
+	//ã‚«ãƒ¼ãƒˆã‚»ãƒƒã‚·ãƒ§ãƒ³
 	$p_home_quantity +=@$_SESSION[DF_order_gift_cart][$A_item['seller_id']][$A_item['product_serial']]['quantity'];
 	if($zaiko_flg==1 && $p_home_quantity>$A_item['zaiko']){
 		$p_home_quantity=$A_item['zaiko'];
@@ -1059,26 +1042,26 @@ if ($p_kind == 'top') {
 
 if($p_kind == 'login_check'){
 	
-	// ƒƒOƒCƒ“ƒ`ƒFƒbƒN
+	// ãƒ­ã‚°ã‚¤ãƒ³ãƒã‚§ãƒƒã‚¯
 	$FB_is_auto = false;
 	if (isset($_SESSION[DF_sessionkey_member_info]['buyer_name'])) {
 		$FB_is_auto = true;
 	} else {
-		// ƒƒOƒCƒ“’†‚©ƒ`ƒFƒbƒN
+		// ãƒ­ã‚°ã‚¤ãƒ³ä¸­ã‹ãƒã‚§ãƒƒã‚¯
 		if (!empty($_COOKIE['auto_login'])) {
 			
 			$ret = FM_check_auto_login($_COOKIE['auto_login'], $tmp_id, $tmp_name);
 			if ($ret === true) {
 				$FB_is_auto = true;
-				// ƒZƒbƒVƒ‡ƒ“’l‚É”ƒ‚¢èî•ñ‚ğ‚Â
+				// ã‚»ãƒƒã‚·ãƒ§ãƒ³å€¤ã«è²·ã„æ‰‹æƒ…å ±ã‚’æŒã¤
 				$_SESSION[DF_sessionkey_member_info]['buyer_id'] = $tmp_id;
 				$_SESSION[DF_sessionkey_member_info]['buyer_name'] = $tmp_name;
 				$_SESSION[DF_sessionkey_member_info]['delivery_buyer_name'] = $tmp_name;
-				// ©“®ƒƒOƒCƒ“ƒZƒbƒg
+				// è‡ªå‹•ãƒ­ã‚°ã‚¤ãƒ³ã‚»ãƒƒãƒˆ
 				FM_setup_login($tmp_id, $_COOKIE['auto_login']);
 				
 				$A_member_info = FM_get_buyer_member($_SESSION[DF_sessionkey_member_info]['buyer_id']);
-				// ‰ïˆõî•ñæ“¾
+				// ä¼šå“¡æƒ…å ±å–å¾—
 				foreach ($A_member_info as $key => $info) {
 					if (!isset($_SESSION[DF_sessionkey_member_info][$key])) {
 						$_SESSION[DF_sessionkey_member_info][$key] = $info;
@@ -1128,21 +1111,21 @@ if($p_kind == 'login_check'){
 		if ((int)$A_member_info['buyer_reg_status'] == 0) {
 			$p_kind = 'cart_summary';
 		} else {
-			$D_mess = '<span style="color:red;">¦”N‰ï”ï‚Ì‚¨x•¥‚¢‚ªŠm”F‚³‚ê‚é‚Ü‚Å“ñ“x–Ú‚Ì‚²w“ü‚Í‚Å‚«‚Ü‚¹‚ñB</span>';
-			// ‰æ–Ê•\¦
+			$D_mess = '<span style="color:red;">â€»å¹´ä¼šè²»ã®ãŠæ”¯æ‰•ã„ãŒç¢ºèªã•ã‚Œã‚‹ã¾ã§äºŒåº¦ç›®ã®ã”è³¼å…¥ã¯ã§ãã¾ã›ã‚“ã€‚</span>';
+			// ç”»é¢è¡¨ç¤º
 			require_once './tpl/gift_login_order_tpl.php';
 			exit;
 		}
 	} else {
 		
-		// ‰æ–Ê•\¦
+		// ç”»é¢è¡¨ç¤º
 		require_once './tpl/gift_login_order_tpl.php';
 		exit;
 	}
 }
 
 
-/*********** ƒJ[ƒg ***********/
+/*********** ã‚«ãƒ¼ãƒˆ ***********/
 if ($p_kind == 'shipping' || $p_kind == 'cart_summary') {
 	
 	$A_member_info = $_SESSION[DF_sessionkey_member_info];
@@ -1330,22 +1313,22 @@ if($p_kind == 'delete_cart_item'){
 	exit;
 }
 //-----------------------------------------------
-// ŠÖ”’è‹`
+// é–¢æ•°å®šç¾©
 //-----------------------------------------------
 
-//XSS‘Îô ˜A‘z”z—ñ‚Ìvalue‚ğƒGƒXƒP[ƒv
+//XSSå¯¾ç­– é€£æƒ³é…åˆ—ã®valueã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—
 function F_change_safe_array($array) { 
     $_array = array();
     foreach ($array as $key => $val) {
-        $_array[$key] = FM_change_safe_html($val); //FM_H() ‚ÅhtmlspecialcharsŠÖ”‚ğ‚©‚¯‚é
+        $_array[$key] = FM_change_safe_html($val); //FM_H() ã§htmlspecialcharsé–¢æ•°ã‚’ã‹ã‘ã‚‹
     }
     return $_array;
 }
 
 /*****************************************
-Šó–]“’…ŠÔˆê——æ“¾
+å¸Œæœ›åˆ°ç€æ™‚é–“ä¸€è¦§å–å¾—
 	$f_id	= ID
-	$f_time	= Šó–]“’…ŠÔ
+	$f_time	= å¸Œæœ›åˆ°ç€æ™‚é–“
 
 *****************************************/
 function F_get_delivery_time( $f_id ){
@@ -1362,7 +1345,7 @@ function F_get_delivery_time( $f_id ){
 					, $c_db->DB_q( $f_id )
 				) ;
 		$res=$c_db->F_mysql_query($c_db->G_DB, $sql);
-		!$res && die('“’…Šó–]ŠÔXVƒGƒ‰[#');
+		!$res && die('åˆ°ç€å¸Œæœ›æ™‚é–“æ›´æ–°ã‚¨ãƒ©ãƒ¼#');
 		while ($row = mysqli_fetch_assoc($res)) {
 			$arr[] = $row;
 		}
@@ -1371,6 +1354,6 @@ function F_get_delivery_time( $f_id ){
 	}
 
 //-----------------------------------------------
-// HTMLi•\¦j
+// HTMLï¼ˆè¡¨ç¤ºï¼‰
 //-----------------------------------------------
 ?>
